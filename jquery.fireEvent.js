@@ -37,7 +37,10 @@
 				// we use jquery to fire the click event because of a bug in IE7-8
 				$(el).click();
 			} else {
+			        if (typeof(el.onblur) != 'undefined') //not defined for IE8
 				el.fireEvent(evts[eventName].ie);
+				else
+				el.fireEvent('onfocusout');
 			}
 		}
 	};
